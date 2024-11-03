@@ -215,16 +215,29 @@ void check_if_sorted_by_age(list<Goat>& trip) {
 }
 void transform_names_to_uppercase(list<Goat>& trip) {
     //convert all goat names to uppercase
-    string name = g.get_name();
-    transform(name.begin(), name.end(), name.begin(), ::toupper);
-    g.set_name(name);
+    transform(trip.begin(), trip.end(), trip.begin(), [](Goat& g) -> Goat& {
+        string name = g.get_name();
+        transform(name.begin(), name.end(), name.begin(), ::toupper);
+        g.set_name(name);
+        return g;
+        });
+    cout << "All goats' names have been transformed to uppercase " << endl;
     
 }
 void find_goats_by_color(list<Goat>& trip) {
 
 }
 void calculate_average_age(const list<Goat>& trip) {
-
+    if (trip.empty()) {
+        cout << "No goats in the trip to calculate average age " << endl;
+        return;
+    }
+    double total_age = accumulate(trip.begin(), trip.end(), 0.0, [](double sum, const Goat& g) {
+        return sum + g.get_age();
+        });
+    double average_age = total_age / trip.size();
+    cout << fixed << setprecision(2);
+    cout << "Average age of goats: " << average_age << " years " << endl;
 }
 void remove_duplicate_goats_by_name(list<Goat>& trip) {
 
