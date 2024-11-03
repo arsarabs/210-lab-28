@@ -8,8 +8,15 @@
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <algorithm>
+#include <set>
+#include <iterator>
+#include <string>
+#include <cctype>    // For toupper
 #include "Goat.h"
-using namespace std; 
+
+using namespace std;
+
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
 const int FULL_MENU = 12, EXTRA_OPTIONS = 5, MAX_AGE_LIMIT = 100;   
