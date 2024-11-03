@@ -1,5 +1,9 @@
 
-//Testing 
+//We start with the lab 24 solution.
+//Lab 24 provided basic functionality to the list of Goat objects : add, delete.
+//Now we know quite a bit more about STL algorithms and how to implement them on associative containers such as the std::list
+//Expand the main menu of this program by adding 8 more options that feature different STL algorithms.
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -8,12 +12,23 @@
 using namespace std; 
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
+const int FULL_MENU = 12, EXTRA_OPTIONS = 5;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
+
+//NEW PROTOTYPES HERE
+//1. find oldest
+//2. find youngest
+//3. find by name
+//4. sort by age
+//5. sort by name
+//6. list colors (uniuqe)
+//7. 
+
 
 int main() {
     srand(time(0));
