@@ -231,7 +231,17 @@ void find_goats_by_color(list<Goat>& trip) {
     cin >> color;
 
     // Collect goats that match the specified color
-    copy_if(trip.begin(), trip.end(), back_inserter(matching_goats)
+    copy_if(trip.begin(), trip.end(), back_inserter(matching_goats), [&color](const Goat& g) {
+        return g.get_color() == color;
+        });
+
+    if (matching_goats.empty()) {
+        cout << "No goats with color \"" << color << "\" found " << endl;
+    }
+    else {
+        cout << "Goats with color \"" << color << "\":\n" << endl;
+        display_trip(matching_goats);
+    }
 }
 void calculate_average_age(const list<Goat>& trip) {
     if (trip.empty()) {
