@@ -12,7 +12,7 @@
 using namespace std; 
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
-const int FULL_MENU = 12, EXTRA_OPTIONS = 5;
+const int FULL_MENU = 12, EXTRA_OPTIONS = 5, MAX_AGE_LIMIT = 100;   
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
@@ -93,10 +93,11 @@ int main_menu() {
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
     cout << "[4] Quit\n";
+    cout << "[5] Extended Operations " << endl;
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 4) {
+    while (choice < 1 || choice > 5) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -146,13 +147,41 @@ int select_goat(list<Goat> trp) {
 }
 
 int extended_menu() {
-
+    cout << "*** EXTENDED OPERATIONS ***\n";
+    cout << "[1] Reverse goats order\n";
+    cout << "[2] Remove goats older than a certain age\n";
+    cout << "[3] Shuffle goats order\n";
+    cout << "[4] Check if trip is sorted by age\n";
+    cout << "[5] Transform goats' names to uppercase\n";
+    cout << "[6] Find all goats of a certain color\n";
+    cout << "[7] Calculate average age of goats\n";
+    cout << "[8] Remove duplicate goats by name\n";
+    cout << "Choice --> ";
+    int choice;
+    cin >> choice;
+    while (choice < 1 || choice > 8) {
+        cout << "Invalid, again --> ";
+        cin >> choice;
+    }
+    return choice;
 }
 void reverse_goats_order(list<Goat>& trip) {
-
+    trip.reverse(); //reverses order of elements
+    cout << "Goats order has been reversed!" << endl;
 }
 void remove_goats_older_than(list<Goat>& trip) {
+    //for this function, we remove al goats older than a userChoice specified age
+    int ageLimit;
+    cout << "Enter goat age limit: " << endl;
+    cin >> ageLimit;
 
+    //input validation
+    while (ageLimit < 0 || ageLimit > MAX_AGE_LIMIT) {
+        cout << "Invalid age, must be between 0 - " << MAX_AGE_LIMIT << endl;
+        cin >> ageLimit;
+    }
+    //remove here
+    size_t remove = trip.remove([ageLimit])
 }
 void shuffle_goats_order(list<Goat>& trip) {
 
