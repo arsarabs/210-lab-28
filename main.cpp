@@ -21,13 +21,7 @@ void display_trip(list<Goat> trip);
 int main_menu();
 
 //NEW PROTOTYPES HERE
-//1. find oldest
-//2. find youngest
-//3. find by name
-//4. sort by age
-//5. sort by name
-//6. list colors (uniuqe)
-//7. 
+
 
 
 int main() {
