@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <list>
 #include "Goat.h"
-using namespace std;
+using namespace std; 
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
 
