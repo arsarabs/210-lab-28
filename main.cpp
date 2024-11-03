@@ -76,6 +76,42 @@ int main() {
                 cout << "Displaying goat data.\n";
                 display_trip(trip);
                 break;
+
+            case EXTENDED_START_OPTION:
+            {
+                // Handle extended menu options
+                int exSel = extended_menu();
+                switch (exSel) {
+                case 1:
+                    reverse_goats_order(trip);
+                    break;
+                case 2:
+                    remove_goats_older_than(trip);
+                    break;
+                case 3:
+                    shuffle_goats_order(trip);
+                    break;
+                case 4:
+                    check_if_sorted_by_age(trip);
+                    break;
+                case 5:
+                    transform_names_to_uppercase(trip);
+                    break;
+                case 6:
+                    find_goats_by_color(trip);
+                    break;
+                case 7:
+                    calculate_average_age(trip);
+                    break;
+                case 8:
+                    remove_duplicate_goats_by_name(trip);
+                    break;
+                default:
+                    cout << "Invalid selection " << endl;
+                    break;
+                }
+            }
+            break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -83,7 +119,7 @@ int main() {
         sel = main_menu();
     }
     
-
+    cout << "GOODBYE! " << endl;
     return 0;
 }
 
@@ -256,5 +292,18 @@ void calculate_average_age(const list<Goat>& trip) {
     cout << "Average age of goats: " << average_age << " years " << endl;
 }
 void remove_duplicate_goats_by_name(list<Goat>& trip) {
-    //TODO
+    // remove_duplicate_goats_by_name() removes goats with duplicate names, keeping only the first occurrence.
+    set<string> seen_names;
+    size_t removed = 0;
+    for (auto it = trip.begin(); it != trip.end(); ) {
+        if (seen_names.find(it->get_name()) != seen_names.end()) {
+            it = trip.erase(it);
+            removed++;
+        }
+        else {
+            seen_names.insert(it->get_name());
+            ++it;
+        }
+    }
+    cout << removed << " duplicate goat(s) removed by name " << endl;
 }
