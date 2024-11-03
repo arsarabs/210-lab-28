@@ -181,10 +181,24 @@ void remove_goats_older_than(list<Goat>& trip) {
         cin >> ageLimit;
     }
     //remove here
-    size_t remove = trip.remove([ageLimit])
+    size_t remove = trip.remove([ageLimit](const Goat& g) {
+        return g.get_age() > age_limit;
+        });
+    cout << removed << " goat(s) removed from the trip " << endl;
 }
 void shuffle_goats_order(list<Goat>& trip) {
+    //randomly shuffles the order of the goats
 
+    //convert list to vector first in order to shuffle, then clear original list and repopulate 
+    //and repopulate with shuffled goats
+
+    vector<Goat> tempVec(trip.begin(), trip.end());
+    random_shuffle(tempVec.begin(), tempVec.end());
+
+    //clear here
+    trip.clear();
+    trip.assign(tempVec.begin(), tempVec.end());
+    cout << "goats have been shuffled " << endl;
 }
 void check_if_sorted_by_age(list<Goat>& trip) {
 
