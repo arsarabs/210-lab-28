@@ -201,7 +201,10 @@ void shuffle_goats_order(list<Goat>& trip) {
     cout << "goats have been shuffled " << endl;
 }
 void check_if_sorted_by_age(list<Goat>& trip) {
-
+    if (trip.empty() || trip.size() == 1) {
+        cout << "Trip is trivially sorted by age. " << endl;
+        return;
+    }
 }
 void transform_names_to_uppercase(list<Goat>& trip) {
 
