@@ -22,14 +22,14 @@ int main_menu();
 
 //NEW PROTOTYPES HERE
 int extended_menu(); // Displays the extended operations menu and captures the user's choice.
-void reverse_goats_order(); // Reverses the order of goats in the list.
-void remove_goats_older_than(); // Removes all goats older than a specified age.
-void shuffle_goats_order(); // Shuffles the order of goats randomly within the list.
-void check_if_sorted_by_age(); // Checks if the list of goats is sorted by age in ascending order.
-void transform_names_to_uppercase(); // Converts all goats' names in the list to uppercase.
-void find_goats_by_color(); // Finds and displays all goats of a specified color in the list.
-void calculate_average_age(); // Calculates and displays the average age of goats in the list.
-void remove_duplicate_goats_by_name(); // Removes goats with duplicate names, keeping only the first occurrence.
+void reverse_goats_order(list<Goat>& trip); // Reverses the order of goats in the list.
+void remove_goats_older_than(list<Goat>& trip); // Removes all goats older than a specified age.
+void shuffle_goats_order(list<Goat>& trip); // Shuffles the order of goats randomly within the list.
+void check_if_sorted_by_age(const list<Goat>& trip); // Checks if the list of goats is sorted by age in ascending order.
+void transform_names_to_uppercase(list<Goat>& trip); // Converts all goats' names in the list to uppercase.
+void find_goats_by_color(const list<Goat>& trip); // Finds and displays all goats of a specified color in the list.
+void calculate_average_age(const list<Goat>& trip); // Calculates and displays the average age of goats in the list.
+void remove_duplicate_goats_by_name(list<Goat>& trip); // Removes goats with duplicate names, keeping only the first occurrence.
 
 int main() {
     srand(time(0));
@@ -148,27 +148,27 @@ int select_goat(list<Goat> trp) {
 int extended_menu() {
 
 }
-void reverse_goats_order() {
+void reverse_goats_order(list<Goat>& trip) {
 
 }
-void remove_goats_older_than() {
+void remove_goats_older_than(list<Goat>& trip) {
 
 }
-void shuffle_goats_order() {
+void shuffle_goats_order(list<Goat>& trip) {
 
 }
-void check_if_sorted_by_age() {
+void check_if_sorted_by_age(list<Goat>& trip) {
 
 }
-void transform_names_to_uppercase() {
+void transform_names_to_uppercase(list<Goat>& trip) {
 
 }
-void find_goats_by_color() {
+void find_goats_by_color(list<Goat>& trip) {
 
 }
-void calculate_average_age() {
+void calculate_average_age(const list<Goat>& trip) {
 
 }
-void remove_duplicate_goats_by_name() {
+void remove_duplicate_goats_by_name(list<Goat>& trip) {
 
 }
