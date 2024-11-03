@@ -12,6 +12,8 @@
 #include <set>
 #include <numeric>
 #include <iterator>
+#include <random>    // Add this include for std::shuffle
+#include <chrono>    // For seeding the random number generator
 #include <string>
 #include <vector>
 #include <cctype>    // For toupper
@@ -215,35 +217,32 @@ void reverse_goats_order(list<Goat>& trip) {
     cout << "Goats order has been reversed!" << endl;
 }
 void remove_goats_older_than(list<Goat>& trip) {
-    //for this function, we remove al goats older than a userChoice specified age
+    // Prompt user for age limit
     int ageLimit;
     cout << "Enter goat age limit: " << endl;
     cin >> ageLimit;
 
-    //input validation
+    // Input validation
     while (ageLimit < 0 || ageLimit > MAX_AGE_LIMIT) {
         cout << "Invalid age, must be between 0 - " << MAX_AGE_LIMIT << endl;
         cin >> ageLimit;
     }
-    //remove here
-    size_t remove = trip.remove_if([ageLimit](const Goat& g) {
+
+    // Count goats to be removed
+    size_t removed_count = count_if(trip.begin(), trip.end(), [ageLimit](const Goat& g) {
         return g.get_age() > ageLimit;
         });
-    cout << remove << " goat(s) removed from the trip " << endl;
+
+    // Remove goats older than ageLimit
+    trip.remove_if([ageLimit](const Goat& g) {
+        return g.get_age() > ageLimit;
+        });
+
+    cout << removed_count << " goat(s) removed from the trip " << endl;
 }
+
 void shuffle_goats_order(list<Goat>& trip) {
-    //randomly shuffles the order of the goats
-
-    //convert list to vector first in order to shuffle, then clear original list and repopulate 
-    //and repopulate with shuffled goats
-
-    vector<Goat> tempVec(trip.begin(), trip.end());
-    random_shuffle(tempVec.begin(), tempVec.end());
-
-    //clear here
-    trip.clear();
-    trip.assign(tempVec.begin(), tempVec.end());
-    cout << "goats have been shuffled " << endl;
+  
 }
 void check_if_sorted_by_age(const list<Goat>& trip) {
     if (trip.empty() || trip.size() == 1) {
