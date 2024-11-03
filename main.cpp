@@ -21,8 +21,15 @@ void display_trip(list<Goat> trip);
 int main_menu();
 
 //NEW PROTOTYPES HERE
-
-
+int extended_menu(); // Displays the extended operations menu and captures the user's choice.
+void reverse_goats_order; // Reverses the order of goats in the list.
+void remove_goats_older_than; // Removes all goats older than a specified age.
+void shuffle_goats_order; // Shuffles the order of goats randomly within the list.
+void check_if_sorted_by_age; // Checks if the list of goats is sorted by age in ascending order.
+void transform_names_to_uppercase; // Converts all goats' names in the list to uppercase.
+void find_goats_by_color; // Finds and displays all goats of a specified color in the list.
+void calculate_average_age; // Calculates and displays the average age of goats in the list.
+void remove_duplicate_goats_by_name; // Removes goats with duplicate names, keeping only the first occurrence.
 
 int main() {
     srand(time(0));
