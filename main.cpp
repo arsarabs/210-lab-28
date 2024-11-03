@@ -10,10 +10,12 @@
 #include <list>
 #include <algorithm>
 #include <set>
+#include <numeric>
 #include <iterator>
 #include <string>
+#include <vector>
 #include <cctype>    // For toupper
-#include "Goat.h"
+#include "Goat.hpp"
 
 using namespace std;
 
@@ -40,7 +42,7 @@ void remove_duplicate_goats_by_name(list<Goat>& trip); // Removes goats with dup
 
 int main() {
     srand(time(0));
-    bool again;
+   // bool again;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -84,7 +86,7 @@ int main() {
                 display_trip(trip);
                 break;
 
-            case EXTENDED_START_OPTION:
+            case EXTRA_OPTIONS:
             {
                 // Handle extended menu options
                 int exSel = extended_menu();
@@ -224,10 +226,10 @@ void remove_goats_older_than(list<Goat>& trip) {
         cin >> ageLimit;
     }
     //remove here
-    size_t remove = trip.remove([ageLimit](const Goat& g) {
-        return g.get_age() > age_limit;
+    size_t remove = trip.remove_if([ageLimit](const Goat& g) {
+        return g.get_age() > ageLimit;
         });
-    cout << removed << " goat(s) removed from the trip " << endl;
+    cout << remove << " goat(s) removed from the trip " << endl;
 }
 void shuffle_goats_order(list<Goat>& trip) {
     //randomly shuffles the order of the goats
@@ -243,7 +245,7 @@ void shuffle_goats_order(list<Goat>& trip) {
     trip.assign(tempVec.begin(), tempVec.end());
     cout << "goats have been shuffled " << endl;
 }
-void check_if_sorted_by_age(list<Goat>& trip) {
+void check_if_sorted_by_age(const list<Goat>& trip) {
     if (trip.empty() || trip.size() == 1) {
         cout << "Trip is trivially sorted by age. " << endl;
         return;
@@ -266,7 +268,7 @@ void transform_names_to_uppercase(list<Goat>& trip) {
         });
     cout << "All goats' names have been transformed to uppercase " << endl;  
 } 
-void find_goats_by_color(list<Goat>& trip) {
+void find_goats_by_color(const list<Goat>& trip) {
     //TODO
     list<Goat> matching_goats;
     string color;
