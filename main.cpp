@@ -17,13 +17,13 @@
 #include <string>
 #include <vector>
 #include <cctype>    // For toupper
-#include "Goat.hpp"
+#include "Goat.h"
 
 using namespace std;
 
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
-const int FULL_MENU = 12, EXTRA_OPTIONS = 5, MAX_AGE_LIMIT = 100;   
+const int EXTRA_OPTIONS = 5, MAX_AGE_LIMIT = 100;   
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
@@ -242,7 +242,21 @@ void remove_goats_older_than(list<Goat>& trip) {
 }
 
 void shuffle_goats_order(list<Goat>& trip) {
-  
+    // Convert list to vector for shuffling
+    vector<Goat> tempVec(trip.begin(), trip.end());
+
+    // Create a random number generator seeded with current time
+    unsigned seed = static_cast<unsigned>(chrono::system_clock::now().time_since_epoch().count());
+    mt19937 generator(seed); // Mersenne Twister engine
+
+    // Shuffle the vector using std::shuffle
+    shuffle(tempVec.begin(), tempVec.end(), generator);
+
+    // Clear the original list and repopulate with shuffled goats
+    trip.clear();
+    trip.assign(tempVec.begin(), tempVec.end());
+
+    cout << "Goats have been shuffled " << endl;
 }
 void check_if_sorted_by_age(const list<Goat>& trip) {
     if (trip.empty() || trip.size() == 1) {
