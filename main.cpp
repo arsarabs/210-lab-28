@@ -205,9 +205,20 @@ void check_if_sorted_by_age(list<Goat>& trip) {
         cout << "Trip is trivially sorted by age. " << endl;
         return;
     }
+    bool sorted = is_sorted(trip.begin(), trip.end(), [](const Goat& a, const Goat& b) {
+        return a.get_age() < b.get_age();
+        });
+    if (sorted)
+        cout << "Goats are sorted by age in ascending order " << endl;
+    else
+        cout << "Goats are NOT sorted by age in ascending order " << endl;
 }
 void transform_names_to_uppercase(list<Goat>& trip) {
-
+    //convert all goat names to uppercase
+    string name = g.get_name();
+    transform(name.begin(), name.end(), name.begin(), ::toupper);
+    g.set_name(name);
+    
 }
 void find_goats_by_color(list<Goat>& trip) {
 
